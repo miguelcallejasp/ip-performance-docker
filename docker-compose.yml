@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+   tx:
+     image: miguelcallejasp/ipperformance:2.0
+     hostname: tx
+     environment:
+       ROLE: tx
+       DESTINATION: rx
+       MIN_MTU: 1450
+       MAX_MTU: 1600
+     depends_on:
+       - rx
+
+   rx:
+     image: miguelcallejasp/ipperformance:2.0
+     hostname: rx
+     environment:
+       ROLE: rx
+       L4P: TCP
+
