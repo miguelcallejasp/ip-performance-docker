@@ -2,7 +2,7 @@ version: '2'
 
 services:
    tx:
-     image: miguelcallejasp/ipperformance:2.0
+     build: .
      hostname: tx
      environment:
        ROLE: tx
@@ -13,8 +13,10 @@ services:
        - rx
 
    rx:
-     image: miguelcallejasp/ipperformance:2.0
+     build: .
      hostname: rx
+     ports:
+       - 5001:5001
      environment:
        ROLE: rx
        L4P: TCP
